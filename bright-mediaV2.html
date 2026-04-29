@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bright Media — תיק עבודות</title>
+<link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:         #141414;
+  --bg-card:    #1c1c1c;
+  --bg-raised:  #222222;
+  --border:     rgba(255,255,255,0.08);
+  --border-mid: rgba(255,255,255,0.14);
+  --cream:      #e8e2d4;
+  --cream-dim:  rgba(232,226,212,0.55);
+  --cream-mute: rgba(232,226,212,0.28);
+  --gold:       #e8b623;
+  --gold-dim:   rgba(232,182,35,0.15);
+  --gold-mid:   rgba(232,182,35,0.35);
+  --white:      #ffffff;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--cream);
+  direction: rtl;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top:0; right:0; left:0;
+  z-index: 100;
+  background: rgba(20,20,20,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 56px;
+  height: 60px;
+}
+
+.nav-logo {
+  font-family: 'Secular One', sans-serif;
+  font-size: 18px;
+  color: var(--cream);
+  letter-spacing: 0.02em;
+}
+.nav-logo span { color: var(--gold); }
+
+.nav-links { display:flex; gap:32px; list-style:none; align-items:center; }
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--cream-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--cream); }
+
+.nav-cta {
+  background: var(--gold) !important;
+  color: #111 !important;
+  padding: 8px 20px !important;
+  border-radius: 3px;
+  font-weight: 500 !important;
+  transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.88 !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px 56px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  top: -160px;
+  left: -200px;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,182,35,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-glow2 {
+  position: absolute;
+  bottom: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,226,212,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 680px;
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 0.9s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.eyebrow::before {
+  content:'';
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+.ey-gold { color: var(--gold); }
+.ey-cream { color: var(--cream-dim); }
+
+.hero-h1 {
+  font-family: 'Secular One', sans-serif;
+  font-size: clamp(38px, 5.5vw, 66px);
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 2px;
+}
+
+.hero-h1-gold {
+  font-family: 'Secular One', sans-serif;
+  font-size: clamp(38px, 5.5vw, 66px);
+  line-height: 1.05;
+  color: var(--gold);
+  margin-bottom: 28px;
+}
+
+.hero-body {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--cream-dim);
+  line-height: 1.8;
+  max-width: 460px;
+  margin-bottom: 40px;
+}
+
+.hero-actions { display:flex; align-items:center; gap:22px; }
+
+.btn-gold {
+  background: var(--gold);
+  color: #111;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 13px 32px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s;
+}
+.btn-gold:hover { opacity: 0.88; }
+
+.btn-outline {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--cream-dim);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--border-mid);
+  padding: 12px 22px;
+  border-radius: 3px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--cream-dim); color: var(--cream); }
+
+.hero-stats {
+  margin-top: 60px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 52px;
+  animation: fadeUp 0.9s 0.18s ease both;
+}
+
+.stat-num {
+  font-family: 'Secular One', sans-serif;
+  font-size: 28px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.stat-label {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--cream-mute);
+}
+
+/* ── CATEGORIES ── */
+.categories-bg {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 80px 56px;
+}
+
+.cat-h2 {
+  font-family: 'Secular One', sans-serif;
+  font-size: 28px;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+
+.cat-sub {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--cream-mute);
+  margin-bottom: 40px;
+}
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+  gap: 10px;
+}
+
+.cat-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px 16px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  text-decoration: none;
+  display: block;
+}
+.cat-card:hover {
+  background: var(--gold-dim);
+  border-color: rgba(232,182,35,0.4);
+  transform: translateY(-2px);
+}
+.cat-card.active {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+}
+
+.cat-icon { font-size: 20px; margin-bottom: 12px; display: block; }
+
+.cat-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 3px;
+}
+
+.cat-desc {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--cream-mute);
+  line-height: 1.5;
+}
+
+/* ── PORTFOLIO ── */
+.portfolio-section {
+  background: var(--bg);
+  padding: 80px 56px;
+}
+
+.port-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.port-h2 {
+  font-family: 'Secular One', sans-serif;
+  font-size: 28px;
+  color: var(--cream);
+}
+
+.port-label {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--cream-mute);
+}
+
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: 'Rubik', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--cream-dim);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.filter-btn:hover { border-color: var(--border-mid); color: var(--cream); }
+.filter-btn.active {
+  background: var(--gold);
+  color: #111;
+  border-color: var(--gold);
+  font-weight: 500;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.portfolio-card {
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.22s, border-color 0.22s;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+.portfolio-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-mid);
+}
+.portfolio-card.hidden { display: none; }
+
+.card-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-overlay {
+  position: absolute; inset:0;
+  background: rgba(0,0,0,0.45);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.portfolio-card:hover .card-overlay { opacity:1; }
+
+.play-btn {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+}
+.play-btn::after {
+  content:'';
+  width:0; height:0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 14px solid #111;
+  margin-right: 2px;
+}
+
+.card-ph {
+  width:100%; height:100%;
+  display:flex; align-items:center; justify-content:center;
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.15);
+  letter-spacing: 0.08em;
+}
+
+.ph-rest  { background: #1e2a30; }
+.ph-real  { background: #1a2830; }
+.ph-fash  { background: #222030; }
+.ph-tech  { background: #1a2228; }
+.ph-food  { background: #201e28; }
+.ph-sport { background: #1c2830; }
+
+.card-info { padding: 14px 15px 16px; }
+
+.card-tag {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+
+.card-client {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--cream-mute);
+}
+
+/* ── CONTACT ── */
+.contact-section {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  padding: 90px 56px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 56px;
+}
+
+.contact-h2 {
+  font-family: 'Secular One', sans-serif;
+  font-size: 36px;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.contact-h2 span { color: var(--gold); }
+
+.contact-body {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--cream-mute);
+  line-height: 1.8;
+  max-width: 360px;
+}
+
+.contact-form {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 36px;
+  min-width: 340px;
+  max-width: 400px;
+  flex-shrink: 0;
+}
+
+.form-group { margin-bottom: 14px; }
+
+.form-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream-mute);
+  margin-bottom: 6px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  border-radius: 3px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--cream);
+  outline: none;
+  transition: border-color 0.18s;
+  direction: rtl;
+}
+.form-input::placeholder { color: var(--cream-mute); }
+.form-input:focus { border-color: var(--gold); }
+
+.form-select {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  border-radius: 3px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--cream);
+  outline: none;
+  cursor: pointer;
+  direction: rtl;
+  appearance: none;
+}
+.form-select:focus { border-color: var(--gold); }
+
+.form-submit {
+  width: 100%;
+  padding: 13px;
+  background: var(--gold);
+  color: #111;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: opacity 0.2s;
+  letter-spacing: 0.02em;
+}
+.form-submit:hover { opacity: 0.88; }
+
+/* ── FOOTER ── */
+footer {
+  background: #0e0e0e;
+  border-top: 1px solid var(--border);
+  padding: 26px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  font-family: 'Secular One', sans-serif;
+  font-size: 15px;
+  color: var(--cream-dim);
+}
+.footer-logo span { color: var(--gold); }
+
+.footer-copy {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--cream-mute);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width:768px) {
+  nav, .hero, .categories-bg, .portfolio-section, .contact-section, footer {
+    padding-left:20px; padding-right:20px;
+  }
+  nav { padding-top:0; padding-bottom:0; }
+  .portfolio-grid { grid-template-columns:1fr 1fr; }
+  .contact-section { flex-direction:column; }
+  .contact-form { min-width:unset; width:100%; }
+  footer { flex-direction:column; gap:10px; text-align:center; padding:22px 20px; }
+}
+@media (max-width:500px) {
+  .portfolio-grid { grid-template-columns:1fr; }
+  .hero-stats { gap:24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Bright<span>.</span>Media</div>
+  <ul class="nav-links">
+    <li><a href="#portfolio">עבודות</a></li>
+    <li><a href="#categories">תחומים</a></li>
+    <li><a href="#contact" class="nav-cta">קבל הצעה</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="eyebrow ey-gold">PREMIUM VIDEO PRODUCTION</div>
+    <h1 class="hero-h1">סרטונים שגורמים</h1>
+    <p class="hero-h1-gold">לאנשים לעצור ולזכור אתכם</p>
+    <p class="hero-body">
+      אנחנו יוצרים סרטוני מותג, פרסומות, תוכן דיגיטלי ואירועי חברות
+      לעסקים וחברות. בחר את התחום שלך וגלה מה אנחנו יוצרים.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-gold">קבל הצעת מחיר</a>
+      <a href="#portfolio" class="btn-outline">צפה בעבודות</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">2000+</div>
+        <div class="stat-label">סרטונים שיצרנו</div>
+      </div>
+      <div>
+        <div class="stat-num">1600+</div>
+        <div class="stat-label">לקוחות מרוצים</div>
+      </div>
+      <div>
+        <div class="stat-num">12</div>
+        <div class="stat-label">תחומי התמחות</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories-bg" id="categories">
+  <div class="eyebrow ey-cream" style="margin-bottom:12px;">BROWSE BY INDUSTRY</div>
+  <h2 class="cat-h2">בחר את התחום שלך</h2>
+  <p class="cat-sub">לחץ על תחום כדי לסנן את הקטלוג ולראות עבודות רלוונטיות</p>
+  <div class="cat-grid">
+    <a class="cat-card active" href="#portfolio" onclick="filterCat('all',this); return false;">
+      <span class="cat-icon">🎬</span>
+      <div class="cat-name">הכל</div>
+      <div class="cat-desc">כל העבודות שלנו</div>
+    </a>
+    <a class="cat-card" href="#portfolio" onclick="filterCat('rest',this); return false;">
+      <span class="cat-icon">🍽</span>
+      <div class="cat-name">מסעדות ואוכל</div>
+      <div class="cat-desc">מותג, אווירה, מנות</div>
+    </a>
+    <a class="cat-card" href="#portfolio" onclick="filterCat('real',this); return false;">
+      <span class="cat-icon">🏠</span>
+      <div class="cat-name">נדל"ן</div>
+      <div class="cat-desc">סיורים וקידום נכסים</div>
+    </a>
+    <a class="cat-card" href="#portfolio" onclick="filterCat('fash',this); return false;">
+      <span class="cat-icon">👗</span>
+      <div class="cat-name">אופנה ויוקרה</div>
+      <div class="cat-desc">לוקים וקמפיינים</div>
+    </a>
+    <a class="cat-card" href="#portfolio" onclick="filterCat('tech',this); return false;">
+      <span class="cat-icon">💻</span>
+      <div class="cat-name">טכנולוגיה</div>
+      <div class="cat-desc">מוצרים ואפליקציות</div>
+    </a>
+    <a class="cat-card" href="#portfolio" onclick="filterCat('food',this); return false;">
+      <span class="cat-icon">🛍</span>
+      <div class="cat-name">מסחר ורטייל</div>
+      <div class="cat-desc">פרסומות ומוצרים</div>
+    </a>
+    <a class="cat-card" href="#portfolio" onclick="filterCat('sport',this); return false;">
+      <span class="cat-icon">⚡</span>
+      <div class="cat-name">ספורט ופיטנס</div>
+      <div class="cat-desc">מותגי ספורט ואירועים</div>
+    </a>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio-section" id="portfolio">
+  <div class="port-header">
+    <h2 class="port-h2">תיק עבודות</h2>
+    <span class="port-label" id="portfolio-label">מציג הכל</span>
+  </div>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterBtn('all',this)">הכל</button>
+    <button class="filter-btn" onclick="filterBtn('rest',this)">מסעדות</button>
+    <button class="filter-btn" onclick="filterBtn('real',this)">נדל"ן</button>
+    <button class="filter-btn" onclick="filterBtn('fash',this)">אופנה</button>
+    <button class="filter-btn" onclick="filterBtn('tech',this)">טכנולוגיה</button>
+    <button class="filter-btn" onclick="filterBtn('food',this)">רטייל</button>
+    <button class="filter-btn" onclick="filterBtn('sport',this)">ספורט</button>
+  </div>
+  <div class="portfolio-grid" id="portfolio-grid">
+
+    <div class="portfolio-card" data-cat="rest">
+      <div class="card-thumb ph-rest"><div class="card-ph">הכנס סרטון</div><div class="card-overlay"><div class="play-btn"></div></div></div>
+      <div class="card-info"><span class="card-tag">מסעדות</span><div class="card-title">סרטון מותג | מסעדת X</div><div class="card-client">לקוח: שם העסק</div></div>
+    </div>
+
+    <div class="portfolio-card" data-cat="real">
+      <div class="card-thumb ph-real"><div class="card-ph">הכנס סרטון</div><div class="card-overlay"><div class="play-btn"></div></div></div>
+      <div class="card-info"><span class="card-tag">נדל"ן</span><div class="card-title">סיור וידאו | פרויקט Y</div><div class="card-client">לקוח: שם העסק</div></div>
+    </div>
+
+    <div class="portfolio-card" data-cat="fash">
+      <div class="card-thumb ph-fash"><div class="card-ph">הכנס סרטון</div><div class="card-overlay"><div class="play-btn"></div></div></div>
+      <div class="card-info"><span class="card-tag">אופנה</span><div class="card-title">קמפיין | מותג Z</div><div class="card-client">לקוח: שם העסק</div></div>
+    </div>
+
+    <div class="portfolio-card" data-cat="tech">
+      <div class="card-thumb ph-tech"><div class="card-ph">הכנס סרטון</div><div class="card-overlay"><div class="play-btn"></div></div></div>
+      <div class="card-info"><span class="card-tag">טכנולוגיה</span><div class="card-title">סרטון מוצר | אפליקציה W</div><div class="card-client">לקוח: שם העסק</div></div>
+    </div>
+
+    <div class="portfolio-card" data-cat="food">
+      <div class="card-thumb ph-food"><div class="card-ph">הכנס סרטון</div><div class="card-overlay"><div class="play-btn"></div></div></div>
+      <div class="card-info"><span class="card-tag">רטייל</span><div class="card-title">פרסומת | רשת V</div><div class="card-client">לקוח: שם העסק</div></div>
+    </div>
+
+    <div class="portfolio-card" data-cat="sport">
+      <div class="card-thumb ph-sport"><div class="card-ph">הכנס סרטון</div><div class="card-overlay"><div class="play-btn"></div></div></div>
+      <div class="card-info"><span class="card-tag">ספורט</span><div class="card-title">מותג ספורט | U</div><div class="card-client">לקוח: שם העסק</div></div>
+    </div>
+
+    <div class="portfolio-card" data-cat="rest">
+      <div class="card-thumb ph-rest"><div class="card-ph">הכנס סרטון</div><div class="card-overlay"><div class="play-btn"></div></div></div>
+      <div class="card-info"><span class="card-tag">מסעדות</span><div class="card-title">תוכן סושיאל | קפה T</div><div class="card-client">לקוח: שם העסק</div></div>
+    </div>
+
+    <div class="portfolio-card" data-cat="real">
+      <div class="card-thumb ph-real"><div class="card-ph">הכנס סרטון</div><div class="card-overlay"><div class="play-btn"></div></div></div>
+      <div class="card-info"><span class="card-tag">נדל"ן</span><div class="card-title">פרויקט יוקרה | S</div><div class="card-client">לקוח: שם העסק</div></div>
+    </div>
+
+    <div class="portfolio-card" data-cat="fash">
+      <div class="card-thumb ph-fash"><div class="card-ph">הכנס סרטון</div><div class="card-overlay"><div class="play-btn"></div></div></div>
+      <div class="card-info"><span class="card-tag">אופנה</span><div class="card-title">לוק בוק | עונת קיץ</div><div class="card-client">לקוח: שם העסק</div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div>
+    <div class="eyebrow ey-gold" style="margin-bottom:14px;">LET'S WORK TOGETHER</div>
+    <h2 class="contact-h2">מוכן ליצור<br><span>משהו מדהים?</span></h2>
+    <p class="contact-body">
+      ספר לנו על הפרויקט שלך ונחזור אליך
+      עם הצעה מותאמת תוך 24 שעות.
+    </p>
+  </div>
+  <div class="contact-form">
+    <form id="contact-form">
+      <div class="form-group">
+        <label class="form-label">שם מלא</label>
+        <input type="text" name="name" class="form-input" placeholder="ישראל ישראלי" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">טלפון</label>
+        <input type="tel" name="phone" id="phone-input" class="form-input" placeholder="050-0000000" required>
+        <div id="phone-error" style="display:none; font-size:11px; color:#e07070; margin-top:5px;">מספר טלפון לא תקין — יש להזין 10 ספרות (לדוגמה: 050-0000000)</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">תחום העסק</label>
+        <select name="industry" class="form-select">
+          <option value="">בחר תחום...</option>
+          <option>מסעדות ואוכל</option>
+          <option>נדל"ן</option>
+          <option>אופנה ויוקרה</option>
+          <option>טכנולוגיה</option>
+          <option>רטייל ומסחר</option>
+          <option>ספורט ופיטנס</option>
+          <option>אחר</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">על הפרויקט</label>
+        <textarea name="message" class="form-input" rows="3" placeholder="מה אנחנו מצלמים?"></textarea>
+      </div>
+      <button class="form-submit" id="submit-btn" type="submit">שלח — נחזור תוך 24 שעות</button>
+      <div id="form-success" style="display:none; margin-top:14px; padding:12px; background:rgba(232,182,35,0.12); border:1px solid rgba(232,182,35,0.3); border-radius:3px; font-size:14px; color:var(--gold); text-align:center;">
+        תודה! קיבלנו את הפרטים ונחזור אליך תוך 24 שעות.
+      </div>
+      <div id="form-error" style="display:none; margin-top:14px; padding:12px; background:rgba(220,50,50,0.1); border:1px solid rgba(220,50,50,0.25); border-radius:3px; font-size:14px; color:#e07070; text-align:center;">
+        משהו השתבש, נסה שוב.
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Bright<span>.</span>Media</div>
+  <div class="footer-copy">© 2024 Bright Media. כל הזכויות שמורות.</div>
+</footer>
+
+<script>
+const labels = {all:'מציג הכל', rest:'מסעדות ואוכל', real:'נדל"ן', fash:'אופנה ויוקרה', tech:'טכנולוגיה', food:'רטייל ומסחר', sport:'ספורט ופיטנס'};
+const btnMap  = {all:'הכל', rest:'מסעדות', real:'נדל"ן', fash:'אופנה', tech:'טכנולוגיה', food:'רטייל', sport:'ספורט'};
+
+function applyFilter(cat) {
+  document.getElementById('portfolio-label').textContent = labels[cat] || 'מציג הכל';
+  document.querySelectorAll('.portfolio-card').forEach(c => {
+    c.classList.toggle('hidden', cat !== 'all' && c.dataset.cat !== cat);
+  });
+}
+
+function filterBtn(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilter(cat);
+}
+
+function filterCat(cat, card) {
+  document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.classList.remove('active');
+    if (b.textContent.trim() === btnMap[cat]) b.classList.add('active');
+  });
+  applyFilter(cat);
+  setTimeout(() => document.getElementById('portfolio').scrollIntoView({behavior:'smooth'}), 80);
+}
+
+// Israeli phone validation
+function validateIsraeliPhone(val) {
+  const digits = val.replace(/[\s\-]/g, '');
+  return /^0(5[0-9]|[2-9][0-9])[0-9]{7}$/.test(digits);
+}
+
+const phoneInput = document.getElementById('phone-input');
+const phoneError = document.getElementById('phone-error');
+
+phoneInput.addEventListener('input', function() {
+  if (this.value.length > 0) {
+    const valid = validateIsraeliPhone(this.value);
+    phoneError.style.display = valid ? 'none' : 'block';
+    this.style.borderColor = valid ? '' : 'rgba(220,50,50,0.6)';
+  } else {
+    phoneError.style.display = 'none';
+    this.style.borderColor = '';
+  }
+});
+
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  const success = document.getElementById('form-success');
+  const error = document.getElementById('form-error');
+  if (!validateIsraeliPhone(phoneInput.value)) {
+    phoneError.style.display = 'block';
+    phoneInput.style.borderColor = 'rgba(220,50,50,0.6)';
+    phoneInput.focus();
+    return;
+  }
+  btn.textContent = 'שולח...';
+  btn.disabled = true;
+  success.style.display = 'none';
+  error.style.display = 'none';
+  try {
+    const res = await fetch('https://formspree.io/f/meenjoqv', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(this)
+    });
+    if (res.ok) {
+      success.style.display = 'block';
+      this.reset();
+    } else {
+      error.style.display = 'block';
+    }
+  } catch(err) {
+    error.style.display = 'block';
+  }
+  btn.textContent = 'שלח — נחזור תוך 24 שעות';
+  btn.disabled = false;
+});
+</script>
+</body>
+</html>
